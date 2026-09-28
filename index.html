@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyHub — Newlands College</title>
+    <link rel="stylesheet" href="Styles.css">
+</head>
+<body>
+
+    <nav class="navbar" aria-label="Site header">
+        <div class="logo" onclick="nav('home')" role="link" tabindex="0">StudyHub <span>— Newlands College</span></div>
+        <div class="navbar-actions">
+            <div class="subjects-menu">
+                <button class="nav-btn subjects-toggle" id="subjectsToggle" aria-expanded="false" aria-haspopup="true">Subjects <span class="chev">▾</span></button>
+                <div class="dropdown" id="subjectsDropdown" role="menu">
+                    <div class="drop-item sub-english" role="menuitem" tabindex="0" onclick="nav('subject','English')"><img src="icons/english.png" alt=""> English</div>
+                    <div class="drop-item sub-calculus" role="menuitem" tabindex="0" onclick="nav('subject','Calculus')"><img src="icons/calculus.png" alt=""> Calculus</div>
+                    <div class="drop-item sub-physics" role="menuitem" tabindex="0" onclick="nav('subject','Physics')"><img src="icons/physics.png" alt=""> Physics</div>
+                    <div class="drop-item sub-chemistry" role="menuitem" tabindex="0" onclick="nav('subject','Chemistry')"><img src="icons/chemistry.png" alt=""> Chemistry</div>
+                    <div class="drop-item sub-biology" role="menuitem" tabindex="0" onclick="nav('subject','Biology')"><img src="icons/biology.png" alt=""> Biology</div>
+                    <div class="drop-item sub-statistics" role="menuitem" tabindex="0" onclick="nav('subject','Statistics')"><img src="icons/statistics.png" alt=""> Statistics</div>
+                </div>
+            </div>
+            <button class="nav-btn" aria-label="Notes" onclick="nav('notes','All Subjects')"><img class="ui-ic" src="icons/nav-notes.png" alt=""> <span class="btn-label">Notes</span></button>
+            <button class="nav-btn" aria-label="Past Papers" onclick="nav('papers','All Subjects')"><img class="ui-ic" src="icons/nav-papers.png" alt=""> <span class="btn-label">Past Papers</span></button>
+            <button class="nav-btn" aria-label="Teacher Slides" onclick="nav('teacher','All Subjects')"><img class="ui-ic" src="icons/nav-teacher.png" alt=""> <span class="btn-label">Teacher Slides</span></button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <aside class="sidebar" aria-label="Primary navigation">
+            <h3>Navigation</h3>
+            <div class="nav-item active" id="sb-home"       onclick="nav('home')"                    role="button" tabindex="0"><img class="ui-ic" src="icons/nav-home.png" alt=""> Home</div>
+            <div class="nav-item"        id="sb-notes-all"  onclick="nav('notes','All Subjects')"    role="button" tabindex="0"><img class="ui-ic" src="icons/nav-notes.png" alt=""> Notes</div>
+            <div class="nav-item"        id="sb-papers-all" onclick="nav('papers','All Subjects')"   role="button" tabindex="0"><img class="ui-ic" src="icons/nav-papers.png" alt=""> Past Papers</div>
+            <div class="nav-item"        id="sb-teacher-all"onclick="nav('teacher','All Subjects')"  role="button" tabindex="0"><img class="ui-ic" src="icons/nav-teacher.png" alt=""> Teacher Slides</div>
+            <h3>Subjects</h3>
+            <div class="nav-item sub-english" id="sb-English" onclick="nav('subject','English')" role="button" tabindex="0"><img class="subj-ic" src="icons/english.png" alt=""> English</div>
+            <div class="nav-item sub-calculus" id="sb-Calculus" onclick="nav('subject','Calculus')" role="button" tabindex="0"><img class="subj-ic" src="icons/calculus.png" alt=""> Calculus</div>
+            <div class="nav-item sub-physics" id="sb-Physics" onclick="nav('subject','Physics')" role="button" tabindex="0"><img class="subj-ic" src="icons/physics.png" alt=""> Physics</div>
+            <div class="nav-item sub-chemistry" id="sb-Chemistry" onclick="nav('subject','Chemistry')" role="button" tabindex="0"><img class="subj-ic" src="icons/chemistry.png" alt=""> Chemistry</div>
+            <div class="nav-item sub-biology" id="sb-Biology" onclick="nav('subject','Biology')" role="button" tabindex="0"><img class="subj-ic" src="icons/biology.png" alt=""> Biology</div>
+            <div class="nav-item sub-statistics" id="sb-Statistics" onclick="nav('subject','Statistics')" role="button" tabindex="0"><img class="subj-ic" src="icons/statistics.png" alt=""> Statistics</div>
+            <h3 style="margin-top:16px;">More</h3>
+            <div class="nav-item" id="sb-External"   onclick="nav('external')"             role="button" tabindex="0"><img class="ui-ic" src="icons/nav-link.png" alt=""> External Links</div>
+        </aside>
+
+        <main class="main-content" id="main-content" tabindex="-1">
+            <div id="backarrow-mount"></div>
+            <div id="app-root" class="page-body"></div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
