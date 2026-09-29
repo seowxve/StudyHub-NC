@@ -11,8 +11,8 @@ jobs:
     steps:
       - name: Query the resources table
         env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+          SUPABASE_URL: ${{ secrets.https://anouachicwdraxgkldpy.supabase.co }}
+          SUPABASE_ANON_KEY: ${{ secrets.sb_publishable_uS43iU0j2vJfG99psuU-Mg_FFdRMW-6 }}
         run: |
           for attempt in 1 2 3; do
             status=$(curl -s -o response.json -w "%{http_code}" \
