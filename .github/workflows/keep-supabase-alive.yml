@@ -1,0 +1,31 @@
+name: Keep Supabase awake
+
+on:
+  schedule:
+    - cron: "0 20 */3 * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Query the resources table
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: |
+          for attempt in 1 2 3; do
+            status=$(curl -s -o response.json -w "%{http_code}" \
+              "$SUPABASE_URL/rest/v1/resources?select=id&limit=1" \
+              -H "apikey: $SUPABASE_ANON_KEY" \
+              -H "Authorization: Bearer $SUPABASE_ANON_KEY")
+            echo "Attempt $attempt: HTTP $status"
+            if [ "$status" = "200" ]; then
+              echo "Supabase responded:"
+              cat response.json
+              exit 0
+            fi
+            sleep 30
+          done
+          echo "Supabase did not respond with 200 after 3 attempts."
+          exit 1
